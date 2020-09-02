@@ -1,0 +1,40 @@
+if (typeof(Shopify) == "undefined") {
+    var product_pathUrl = "http://localhost/private-apps/buynowbutton/get_button.php";
+    var shop = "divya-gohil.myshopify.com";
+}
+else {
+    var product_pathUrl = "https://www.buynowbutton.us/apps/buynowbutton/get_button.php";
+    var shop = Shopify.shop;
+}
+function startbuynowbutton(t) {    
+    "product" == __st.rtyp && t.ajax({
+        url: product_pathUrl,
+        type: "post",
+        data: {
+            store: shop,
+            id: __st.rid
+        },
+        success: function(e) {
+            "1" == (e = t.parseJSON(e)).add_tocart && t('[action="/cart/add"] [type=submit]').hide(), t(".buy_now_button_app").html(e.page).addClass("market_icon"), setTimeout(function() {
+                t("body").append(e.popup)
+            }, e.time_interval)
+        },
+        error: function() {}
+    })
+}
+var loadScript = function(t, e) {
+        var o = document.createElement("script");
+        o.type = "text/javascript", o.readyState ? o.onreadystatechange = function() {
+            "loaded" != o.readyState && "complete" != o.readyState || (o.onreadystatechange = null, e())
+        } : (o.onreadystatechange = e, o.onload = e), o.src = t;
+        var n = document.getElementsByTagName("script")[0];
+        n.parentNode.insertBefore(o, n)
+    },
+    BNWAPP = BNWAPP || new Object;
+"undefined" == typeof jQuery || void 0 === jQuery.ajax ? loadScript("//code.jquery.com/jquery-3.4.1.min.js", function() {
+    BNWAPP.jQuery = jQuery.noConflict(), BNWAPP.jQuery(document).ready(function() {
+        startbuynowbutton(BNWAPP.jQuery)
+    })
+}) : jQuery(document).ready(function() {
+    startbuynowbutton(jQuery)
+});

@@ -1,0 +1,47 @@
+.vedioVBox {
+    width: 45%;
+    display: inline-block;
+    margin: 5px 18px;
+    padding: 9px 9px;
+  	overflow:hidden;
+  	transition:all 0.3s;
+  -webkit-transition:all 0.3s;
+}
+
+div#inteface {
+  width: 800px;
+
+}
+.vedioVBox:hover {
+	box-shadow:1px 0px 10px 0 rgba(0,0,0,0.08);
+  -webkit-box-shadow:1px 0px 5px 0 rgba(0,0,0,0.08);
+}
+@media(max-width:500px){
+  .vedioVBox{
+  	width:100%;
+  }
+}
+header.site-header.minimal nav.nav-bar ul.dropdown{
+
+top:35px;
+}
+
+section#corpo {
+  display: block;
+  background: color=000000;
+  width: 300px;
+  float: left;
+}
+
+aside#lateral {
+  display: block;
+  width: 900px;
+  margin: 1px 10px 1px 1px;
+  padding: 0px 5px 1px 5px;
+  float: right;
+}
+footer#rodape {
+  clear: both;
+  text-align: center;
+
+}
